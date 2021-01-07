@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismissModal()">Annuler</ion-button>
+    </ion-buttons>
+    <ion-title>Ajouter un patient</ion-title>
+    <ion-buttons slot="end">
+      <form [formGroup]="patientForm" (ngSubmit)="addPatient()">
+        <ion-button [disabled]="patientForm.invalid || isLoading" type="submit" shape="round" color="primary" fill="solid" size="small" >&nbsp; Ajouter  &nbsp;</ion-button>
+      </form>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-progress-bar color="secondary" *ngIf="isLoading" type="indeterminate"></ion-progress-bar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="patientForm" (ngSubmit)="addPatient()">
+    <ion-list align="center" lines="inset">
+      <ion-list-header>
+        Informations sur le patient
+      </ion-list-header>
+
+      <ion-item detail="false" lines="none" class="ion-margin-vertical">
+        <ion-avatar slot="start">
+          <img [srcset]="photo == '' ? '../../assets/img/user.png' : photo">
+        </ion-avatar>
+        <ion-buttons slot="end">
+          <ion-button [disabled]="isLoading" (click)="takePicture()"> <ion-icon name="camera-outline" slot="start"></ion-icon> </ion-button>
+          <ion-button [disabled]="isLoading" (click)="oldPicture()"> <ion-icon name="refresh-outline" slot="end"></ion-icon> </ion-button>
+          <ion-button [disabled]="isLoading" (click)="clearPicture()"> <ion-icon name="trash-outline" slot="end"></ion-icon> </ion-button>
+        </ion-buttons>
+      </ion-item>
+
+      <ion-item lines="inset">
+        <ion-label color="dark" position="stacked">Nom <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input [disabled]="isLoading" maxlength="80" autocapitalize="on" formControlName="nom" required type="text" inputmode="text"></ion-input>
+      </ion-item>
+
+      <ion-item lines="inset">
+        <ion-label color="dark" position="stacked">Prenom <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input [disabled]="isLoading" maxlength="80" autocapitalize="on" formControlName="prenom" required type="text" inputmode="text"></ion-input>
+      </ion-item>
+
+      <ion-item lines="inset">
+        <ion-label color="dark" position="stacked">Email <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input [disabled]="isLoading" maxlength="80" autocapitalize="on" formControlName="email" required type="email" inputmode="email"></ion-input>
+      </ion-item>
+
+      <ion-item lines="inset">
+        <ion-label color="dark" position="stacked">Téléphone <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input [disabled]="isLoading" maxlength="80" autocapitalize="on" formControlName="phone" required type="tel" inputmode="tel"></ion-input>
+      </ion-item>
+
+      <ion-item lines="inset">
+        <ion-label>Sexe <ion-text color="danger">*</ion-text></ion-label>
+        <ion-select placeholder="Veillez choisir" formControlName="sexe" required>
+          <ion-select-option value="m">Masculin</ion-select-option>
+          <ion-select-option value="f">Feminin</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="inset">
+        <ion-label color="dark" position="stacked">Localisation </ion-label>
+        <ion-input readonly="true" class="ion-margin-top" *ngIf="coordonnee" ngModel="{{coordonnee.coords.latitude}}° N" [disabled]="isLoading" formControlName="latitude" autocapitalize="on" type="email" inputmode="text"></ion-input>
+        <ion-input readonly="true" class="ion-margin-bottom" *ngIf="coordonnee" ngModel="{{coordonnee.coords.longitude}}° E" [disabled]="isLoading" formControlName="longitude"  autocapitalize="on" type="email" inputmode="text"></ion-input>
+        <ion-spinner class="ion-margin" name="crescent" *ngIf="!coordonnee"></ion-spinner>
+      </ion-item>
+
+      <ion-item lines="inset">
+        <ion-label color="dark" position="stacked">Description </ion-label>
+        <ion-textarea [disabled]="isLoading" rows="7" autocapitalize="on" formControlName="description" inputmode="text"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

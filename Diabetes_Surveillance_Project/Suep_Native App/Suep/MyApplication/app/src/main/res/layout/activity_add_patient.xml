@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        tools:context=".AddPatientActivity">
+
+        <LinearLayout
+            android:id="@+id/sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/login_bg"
+            android:paddingBottom="100dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Entrez les informations"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="28sp"
+                android:layout_marginBottom="15dp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nom"
+                android:inputType="text"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Prenom"
+                android:inputType="textPassword"
+                android:layout_marginBottom="15dp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Telephone"
+                android:inputType="phone"
+                android:layout_marginBottom="15dp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="15dp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="date de naissance"
+                android:inputType="date"
+                android:layout_marginBottom="15dp"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ville"
+                android:inputType="text"
+                android:layout_marginBottom="15dp"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Quartier"
+                android:inputType="text"
+                android:layout_marginBottom="15dp"
+                />
+            <Button
+                android:id="@+id/btnTakePicture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Prendre un photo "
+                android:layout_marginBottom="15dp"/>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/capturedImage"
+                android:layout_above="@+id/btnTakePicture"
+                android:layout_marginBottom="15dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enregistrer"
+                android:background="@drawable/btn_bg"
+                android:textColor="#fff"
+                android:textSize="22sp"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

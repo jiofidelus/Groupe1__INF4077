@@ -1,0 +1,32 @@
+<img srcset="../assets/img/whatsup.png" width="70%"/>
+
+<h6> <p class="ion-padding-horizontal"> Consultez les nouvelles informations qui vous concernes dans les differents items. </p> </h6>
+
+<ion-grid class="ion-padding-horizontal">
+    <ion-row>
+        <ion-col size-lg="4" size-md="6" size-sm="6" size="6">
+            <ion-card (click)="infoSymptomesDiabete()"  routerDirection="forward" class="ion-no-padding" style="margin: 4px;">
+                <img srcset="../assets/img/symptome.png"/>
+                <ion-card-header>
+                    <ion-card-title>Infos.</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    Consultez les infos sur le diabete.
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+
+        <ion-col size-lg="4" size-md="6" size-sm="6" size="6">
+            <ion-card button="true" (click)="openPageStatistique()" class="ion-no-padding" style="margin: 4px;">
+                <img srcset="../assets/img/stat.png"/>
+                <ion-card-header>
+                    <ion-card-title>Statistiques</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    Consultez les statistiques de l'épidémie.
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+
+    </ion-row>
+</ion-grid>
