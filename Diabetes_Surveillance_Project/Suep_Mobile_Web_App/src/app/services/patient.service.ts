@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Patient} from '../models/patient';
 import firebase from 'firebase';
+import {Patient} from '../../models/patient';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,12 @@ export class PatientService {
   async AjouterPatient(pat: Patient) {
     return new Promise((resolve, reject) => {
       firebase.firestore().collection('patients').doc().set(Object.assign({}, pat)).then(
-          (docRef) => {
-            resolve();
-          },
-          (error) => {
-            reject(error);
-          }
+        (docRef) => {
+          resolve();
+        },
+        (error) => {
+          reject(error);
+        }
       );
     });
   }

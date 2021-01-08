@@ -1,58 +1,22 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {RegisterComponent} from './register/register.component';
 import {AuthGuard} from './services/auth-guard.service';
 import {RedirectGuardService} from './services/redirect-guard.service';
+import {LoginComponent} from './login/login.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    canActivate: [AuthGuard],
-    redirectTo: 'folder',
-    pathMatch: 'full'
-  },
-  {
-    path: 'folder',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
-  {
-    path: 'folder/:id',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
-  {
-    path: 'home',
-    canActivate: [RedirectGuardService],
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'inscription',
-    canActivate: [RedirectGuardService],
-    loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule)
-  },
-  {
-    path: 'connexion',
-    canActivate: [RedirectGuardService],
-    loadChildren: () => import('./connexion/connexion.module').then( m => m.ConnexionPageModule)
-  },
-  {
-    path: 'add-patient',
-    loadChildren: () => import('./pages/patients/add-patient/add-patient.module').then( m => m.AddPatientPageModule)
-  },
-  {
-    path: 'apercu',
-    loadChildren: () => import('./pages/patients/apercu/apercu.module').then( m => m.ApercuPageModule)
-  },
-  {
-    path: 'statistique',
-    loadChildren: () => import('./pages/presentation/statistique/statistique.module').then( m => m.StatistiquePageModule)
-  }
+  { path: '', canActivate: [AuthGuard], redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', canActivate: [RedirectGuardService], component: HomeComponent },
+  { path: 'register', canActivate: [RedirectGuardService], component: RegisterComponent },
+  { path: 'login', canActivate: [RedirectGuardService], component: LoginComponent },
+  { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

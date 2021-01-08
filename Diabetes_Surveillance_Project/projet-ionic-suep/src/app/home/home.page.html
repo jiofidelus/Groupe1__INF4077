@@ -1,0 +1,41 @@
+<ion-header [translucent]="true" class="ion-no-border ion-padding">
+  <ion-toolbar class="ion-text-center">
+    <img class="ion-margin-top" srcset="../assets/img/logo-complet.png" width="28%"/>
+    <ion-text>
+      <h3 class="ion-margin-start">Bienvenu sur Suep</h3>
+    </ion-text>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <img srcset="../assets/img/1.png"/>
+      <h4 class="ion-margin-bottom">Surveillance épidémiologique</h4>
+      <p>Collecter, de façon continue, des informations sur les événements de santé pour construire des indicateurs.</p>
+    </ion-slide>
+    <ion-slide>
+      <img srcset="../assets/img/2.png"/>
+      <h4>Prise en charge</h4>
+      <p>Etablissez en fonction d'une évaluation initiale et régulière l'état de santé de vos patients.</p>
+    </ion-slide>
+    <ion-slide>
+      <img srcset="../assets/img/3.png"/>
+      <h4>Collecte mobile</h4>
+      <p>récupérer les symptômes de vos patients par téléphone portable intelligent, simple, facile et efficace.</p>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button mode="ios" routerLink="../inscription" shape="round" expand="block" class="ion-margin-bottom">Démarrer avec Suep</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-label><a routerLink="../connexion" class="ion-margin-vertical">J'ai déja un compte</a></ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
