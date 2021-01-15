@@ -107,7 +107,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="    Sympthômes   "
+                        android:text="    Symptômes   "
                         android:textStyle="bold"
                         android:textAlignment="center"/>
 
