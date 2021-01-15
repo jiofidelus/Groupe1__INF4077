@@ -12,20 +12,17 @@ Avant d'installer SUEP vous devez disposer d'un navigateur wep (Mozilia, Chrome,
 Vous devez disposer d'un compte SMS enfin de pouvoir envoyer des SMS.
 
 Prerequits
-Prerequits version android
+Prerequits version android natif
 Disposer d'un tèlèphone mobile disposans d'un systeme d'exploitation Andorid version minimal 7.0.
 
 Install version web
 
 Dans la barre de tâche de votre navigateur vous saisisez le lien du site donné plus haut (https://suep-b6065.web.app).
 
-Install Version Android
+Installer la Version CrossPlateForme
 
 Pour la version android vous recherchez SUEP dans le PlayStore. vous cliquez sur installer.
 Vous Devez avoir souscrit au fofert SMS de votre operateur telephonique.
 
 Install Version CrossPlateForme (Disponible à la fois sur Android et sur IOS)
-
-Pour la version android vous recherchez SUEP dans le PlayStore. vous cliquez sur installer.
-Vous Devez avoir souscrit au fofert SMS de votre operateur telephonique.
 
