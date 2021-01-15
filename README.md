@@ -17,7 +17,7 @@ Disposer d'un tèlèphone mobile disposans d'un systeme d'exploitation Andorid v
 
 Install version web
 
-Dans la barre de tache de votre navigateur vous saisisez le lien du site donné plus haut (https://suep-b6065.web.app).
+Dans la barre de tâche de votre navigateur vous saisisez le lien du site donné plus haut (https://suep-b6065.web.app).
 
 Install Version Android
 
