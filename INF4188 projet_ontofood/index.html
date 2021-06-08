@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link href="css/ontostyle.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="css/bootstrap.min.css" rel="stylesheet" >
+    <link href="css/ontostyle.css" rel="stylesheet">
 
     <title>OntoFood</title>
   </head>
@@ -18,7 +18,10 @@
             <div class="inner">
               <nav class="nav nav-masthead justify-content-center">
                 <a class="nav-link active" href="#">Moteur recherche</a>
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#pageApropos">A propos</a>
+                <a class="nav-link" href="register.htm">Inscription</a>
+                <a class="nav-link" href="login.htm">Connexion</a>
+                <a class="nav-link" href="verify.htm">Mon compte</a>
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#downloadOntologie">Télecharger ontologie</a>
               </nav>
             </div>
           </header>
@@ -44,15 +47,18 @@
         </div>
 
         <!-- A propos -->
-            <div style="color: black;" class="modal fade" id="pageApropos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div style="color: black;" class="modal fade" id="downloadOntologie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">A Propos</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Téléchargement de l'ontologie</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    Cette plateforme est un moteur de recherche dans une ontologie de nourriture
+                    Clickez sur ce bouton pour telecharger l'ontologie
+                    <p class="lead mt-4">
+                      <a target="_blank" download="food.owl" href="src/assets/food.owl" class="btn btn-lg btn-primary">Télécharger</a>
+                    </p>
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -61,7 +67,7 @@
                 </div>
             </div>
 
-    <script src="js/jquery-3.6.0.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
