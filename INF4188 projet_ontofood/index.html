@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="css/ontostyle.css" rel="stylesheet" crossorigin="anonymous">
+
+    <title>OntoFood</title>
+  </head>
+      <body class="text-center">
+
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+          <header class="masthead mb-auto">
+            <div class="inner">
+              <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="#">Moteur recherche</a>
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#pageApropos">A propos</a>
+              </nav>
+            </div>
+          </header>
+    
+          <main role="main" class="inner cover">
+            <img width="" src="src/assets/logo (white).png" class="img-fluid" style="margin-top: 10%;" alt="...">
+            <div class="input-group input-group-lg">
+                <input style="width: 75%;" placeholder="Que recherchez vous ?" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            </div>
+            <p class="lead mt-4">
+                <a href="result.htm" class="btn btn-lg btn-secondary">Rechercher</a>
+              </p>
+            <h1 class="cover-heading">Bienvenue sur OntoFood.</h1>
+            <p class="lead">Vous pouvez mettre a jour la base de donnée <a href="update.htm">en cliquant ici</a></p>
+            
+          </main>
+    
+          <footer class="mastfoot mt-auto">
+            <div class="inner">
+              <p>OntoFood, Travail Pratique WebSementic.</p>
+            </div>
+          </footer>
+        </div>
+
+        <!-- A propos -->
+            <div style="color: black;" class="modal fade" id="pageApropos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">A Propos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    Cette plateforme est un moteur de recherche dans une ontologie de nourriture
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+    <script src="js/jquery-3.6.0.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+</body>
+</html>
