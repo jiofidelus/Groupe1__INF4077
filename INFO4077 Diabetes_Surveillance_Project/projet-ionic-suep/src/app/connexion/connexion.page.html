@@ -1,0 +1,29 @@
+<ion-header [translucent]="true" class="ion-no-border ion-padding">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" icon="arrow-back-outline" defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Connexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="connexion(form)">
+    <ion-list class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="floating">Votre adresse email</ion-label>
+        <ion-input name="identifiant" ngModel required inputmode="email" autocomplete="true" type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Votre mot de passe</ion-label>
+        <ion-input name="password" ngModel required inputmode="password" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding ion-margin-top">
+      <ion-button mode="ios" expand="block" shape="round" type="submit" [disabled]="form.invalid" class="ion-no-margin">Se connecter</ion-button>
+    </div>
+    <div class="ion-padding ion-text-center">
+      <ion-text [style.fontWeight]="'bold'" [style.fontSize]="'13px'" color="dark"><span class="ion-margin-vertical" (click)="presentResetPassword()">J'ai oublié mon mot de passe</span></ion-text>
+    </div>
+  </form>
+</ion-content>

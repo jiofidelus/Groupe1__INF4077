@@ -1,0 +1,57 @@
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading"> <b> Suep </b> <p>Diabete</p> </div>
+    <div class="list-group list-group-flush">
+      <a type="button" (click)="currentPage='Accueil'" class="list-group-item list-group-item-action bg-light">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+          <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+        </svg>
+        Accueil
+      </a>
+      <a type="button" (click)="currentPage='Patients'" class="list-group-item list-group-item-action bg-light"><i class="bi bi-person-bounding-box"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg>
+        Patients
+      </a>
+      <a type="button" (click)="currentPage='Sensibilisation'" class="list-group-item list-group-item-action bg-light">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open-fill" viewBox="0 0 16 16">
+          <path d="M8.941.435a2 2 0 0 0-1.882 0l-6 3.2A2 2 0 0 0 0 5.4v.313l6.709 3.933L8 8.928l1.291.717L16 5.715V5.4a2 2 0 0 0-1.059-1.765l-6-3.2zM16 6.873l-5.693 3.337L16 13.372v-6.5zm-.059 7.611L8 10.072.059 14.484A2 2 0 0 0 2 16h12a2 2 0 0 0 1.941-1.516zM0 13.373l5.693-3.163L0 6.873v6.5z"/>
+        </svg>
+        Sensibilisation
+      </a>
+
+      <a type="button" (click)="currentPage='Deconnexion'" class="list-group-item list-group-item-action bg-light">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M4 1a1 1 0 0 0-1 1v13H1.5a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2a1 1 0 0 0-1-1H4zm2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+        </svg>
+        Déconnexion
+      </a>
+
+      <a href="#" class="list-group-item list-group-item-action bg-light disabled">
+        Suep © 2020
+      </a>
+
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
+      <button class="btn" id="menu-toggle"><span class="navbar-toggler-icon"></span></button>
+      <a class="navbar-brand" href="#">{{currentPage}}</a>
+    </nav>
+    <div class="container-fluid">
+      <app-deconnexion *ngIf="currentPage === 'Deconnexion'"></app-deconnexion>
+      <app-accueil *ngIf="currentPage === 'Accueil'"></app-accueil>
+      <app-sensibilisation *ngIf="currentPage === 'Sensibilisation'"></app-sensibilisation>
+      <app-patients *ngIf="currentPage === 'Patients'"></app-patients>
+      <app-add-patient *ngIf="currentPage === 'Ajout patient'"></app-add-patient>
+      <app-statistique *ngIf="currentPage === 'Statistiques'"></app-statistique>
+      <app-apercu data="{{parametre}}" *ngIf="currentPage === 'Apercu patient'"></app-apercu>
+    </div>
+  </div>
+
+</div>

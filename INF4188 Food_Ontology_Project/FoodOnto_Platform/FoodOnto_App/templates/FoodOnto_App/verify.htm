@@ -1,0 +1,66 @@
+{%load static%}
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="{%static '/css/bootstrap.min.css'%}">
+    
+
+    <title>OntoFood</title>
+  </head>
+  <body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'home' %}">
+                  <img src="{%static '/assets/logo(white).png'%}" alt="" width="200" height="100">
+              </a>
+
+              <a class="navbar-brand" href="#">Page de verification des ontologies</a>
+          </div>
+        </nav>
+      </header>
+
+
+    <main class="container">
+
+        <p>
+            &nbsp;
+            <!-- Juste pour l'espacement -->
+        </p>
+
+       
+          {%for onto in ontos%}
+            <div class="row">
+              <div class="col-sm-12">
+                
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <h3 class="card-title">{{onto.subject}}</h3>
+                    <a href="#">{{onto.predicate}}</a>
+                    <p class="card-text">{{onto.object}}</p>
+                    <form action="{%url 'updateOnto' %}" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" value="{{onto.subject}}" name="subject">
+                      <input type="hidden" value="{{onto.predicate}}" name="predicate">
+                      <input type="hidden" value="{{onto.object}}" name="object">
+                      <input type="submit" class="btn btn-success" value="Valider">
+                    </form>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          {%endfor%}
+    </main>
+
+    <script src="{%static '/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{%static '/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

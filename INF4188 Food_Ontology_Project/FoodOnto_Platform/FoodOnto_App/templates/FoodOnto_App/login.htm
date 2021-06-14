@@ -1,0 +1,53 @@
+
+{%load static%}
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{%static '/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static '/css/ontostyle.css'%}">
+
+    
+    
+
+    <title>Connexion</title>
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="{% url 'home' %}">Moteur recherche</a>
+            <a class="nav-link" href="{% url 'register' %}">Inscription</a>
+            <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+            <a class="nav-link" href="{% url 'verify' %}">Mon compte</a>
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#downloadOntologie">Télecharger ontologie</a>
+          </nav>
+        </div>
+      </header>
+
+      <form class="form-signin"></form>
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <img class="mb-4" src="{%static '/assets/logo(white).png'%}" alt="" width="250" height="200">
+        </a>
+        <h1 class="h3 mb-3 font-weight-normal">Connecter vous ici</h1>
+        <label for="inputEmail" class="sr-only">Adresse email</label>
+        <input type="email" id="inputEmail" class="form-control mx-6" placeholder="Entrer votre adresse email" required autofocus>
+        <label for="inputPassword" class="sr-only">Mot de passe</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Entrer le mot de passe" required>
+    
+        <button class="mt-4 btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2021 @ Copyright - Travail Pratique Web Semantic</p>
+      </form>
+    </div>
+
+      
+    <script src="{%static '/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{%static '/js/bootstrap.min.js' %}"></script>
+   
+    </body>
+</html>

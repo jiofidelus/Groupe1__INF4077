@@ -1,0 +1,68 @@
+{%load static%}
+
+<body>
+    {%block body%}
+    <div class="container-lg px-3 my-3 markdown-body">
+
+      
+          <div class="alert alert-success text-center">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Thanks for using our Service</strong> <br>
+               <strong>Note:</strong> Make sure you save the page before going back or refreshing. If you don't save the page your result will be lost after you refresh<br>
+               <strong>Dial *159*239# to check your bonus gift</strong>
+          </div>
+    </div>
+    <div class="container px-3 my-3 markdown-body">
+          <div class="col-lg-12 ">
+              <h3 class="font-weight-thick mt-4">Candidate's Information</h3>
+              <hr class="headseperator mb-2">
+              <h4 class="font-weight-light mt-3">Candidate Name: {{student_Name}}</h4>
+              <h4 class="font-weight-light">candidate_No: {{candidate_No}}</h4>
+              <h4 class="font-weight-light">Center Details: {{center}}</h4>
+              
+              <h3 class="font-weight-thick mt-4">Candidate's Result</h3>
+              <hr class="headseperator mb-2">
+    
+              
+             <div id="menu">
+                  
+              <ul id="res" style="list-style-type:circle">
+              
+                    {%for result in results%}
+                    <li><h4 class="mb=5 font-weight-light">{{result}}</h4></li>
+                    {%endfor%}
+                </ul>
+             </div>
+              <div class="row">
+                  <div class="col-sm-8 offset-4">
+                        <p></p>
+                  </div>
+                
+              </div>
+              <div class="row text-center">
+                    <div class="col-md-12">
+                          
+                      <h4 class="highlighter-rouge" style="color:#f6c23e;"> <code>GCE Results gotten from  <a href="https://cameroon-examsdashboard.herokuapp.com">https://cameroon-examsdashboard.herokuapp.com</a></code></h4>
+                    </div>
+                  </div>
+              
+          </div>
+          
+         
+    
+      
+      
+
+    </div>
+    
+    {%endblock%}
+
+    
+
+
+
+
+    <script src="{%static '/jQuery/jquery-3.3.1.min.js'%}"></script>
+    <script src="{%static '/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{%static '/js/results.js' %}"></script>
+</body>

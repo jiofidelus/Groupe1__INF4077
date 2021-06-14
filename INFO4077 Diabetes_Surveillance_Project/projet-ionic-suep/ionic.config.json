@@ -1,0 +1,7 @@
+{
+  "name": "projet-suep",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

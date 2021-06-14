@@ -1,0 +1,38 @@
+<ion-header [translucent]="true" class="ion-no-border ion-padding">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" icon="arrow-back-outline" defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inscription</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="inscription(form)">
+    <ion-list class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="floating">Votre nom</ion-label>
+        <ion-input name="nom" ngModel required inputmode="text" autocomplete="true" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Votre prenom</ion-label>
+        <ion-input name="prenom" ngModel required inputmode="text" autocomplete="true" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Votre adresse email</ion-label>
+        <ion-input name="email" ngModel required inputmode="email" autocomplete="true" type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Votre numéro de téléphone</ion-label>
+        <ion-input name="telephone" ngModel required inputmode="tel" autocomplete="true" type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mot de passe (6+ caractères)</ion-label>
+        <ion-input minlength="6" name="password" ngModel required inputmode="password" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding ion-margin-top">
+      <ion-button mode="ios" expand="block" shape="round" type="submit" [disabled]="form.invalid" class="ion-no-margin">S'inscrire</ion-button>
+    </div>
+  </form>
+</ion-content>

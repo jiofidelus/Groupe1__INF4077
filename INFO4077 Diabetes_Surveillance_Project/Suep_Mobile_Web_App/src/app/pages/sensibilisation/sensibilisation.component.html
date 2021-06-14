@@ -1,0 +1,17 @@
+<img srcset="../assets/img/sensibilisation.png" width="70%"/>
+
+<form [formGroup]="sensibiliseForm" (ngSubmit)="send()">
+  <ion-list align="center" lines="inset">
+    <ion-item lines="inset">
+      <ion-label color="dark" position="stacked">Message de sensibilisation pour vos patients </ion-label>
+      <ion-textarea [disabled]="isLoading" rows="7" autocapitalize="on" formControlName="texte" inputmode="text"></ion-textarea>
+    </ion-item>
+
+    <div class="ion-padding ion-margin-top">
+      <ion-button expand="block" shape="round" mode="ios" type="submit" [disabled]="sensibiliseForm.invalid || isLoading" class="ion-no-margin">Envoyer à {{patients.length}} patient{{patients.length > 1 ? 's' : ''}}</ion-button>
+    </div>
+  </ion-list>
+  <div *ngIf="isLoading" class="ion-text-center">
+    <ion-spinner name="lines-small"></ion-spinner>
+  </div>
+</form>

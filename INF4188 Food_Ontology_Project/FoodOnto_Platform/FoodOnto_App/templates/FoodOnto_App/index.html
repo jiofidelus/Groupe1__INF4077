@@ -1,0 +1,84 @@
+
+{%load static%}
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{%static '/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static '/css/ontostyle.css'%}">
+    
+
+    <title>OntoFood</title>
+  </head>
+      <body class="text-center">
+
+        <div class="cover-container d-flex w-125 h-100 p-3 mx-auto flex-column">
+          <header class="masthead mb-auto">
+            <div class="inner">
+              <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="#">Moteur recherche</a>
+                <a class="nav-link" href="{% url 'register' %}">Inscription</a>
+                <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+                <a class="nav-link" href="{% url 'verify' %}">Verify Onto</a>
+                <a class="nav-link" href="{% url 'verify' %}">Mon compte</a>
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#downloadOntologie">Télecharger ontologie</a>
+              </nav>
+            </div>
+          </header>
+    
+          <main role="main" class="inner cover">
+            <img width=""  src="{%static '/assets/logo.png'%}" class="img-fluid" style="margin-top: 10%;" alt="...">
+            <form  class="form-group" action="{% url 'displayQueryResults' %}" method="POST">
+              {% csrf_token %}
+              <div class="input-group input-group-lg">
+                <input style="width: 75%;" placeholder="Que recherchez vous ?" type="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="query" autofocus required>
+              </div>
+              <p class="lead mt-4">
+                  
+                  <input type="submit" class="btn btn-lg btn-secondary" value="Rechercher"  >
+              </p>
+            </form>
+            
+            <h1 class="cover-heading">Bienvenue sur OntoFood.</h1>
+            <p class="lead">Vous pouvez mettre a jour la base de donnée <a href="{% url 'update' %}">en cliquant ici</a></p>
+          </main>
+    
+          <footer class="mastfoot mt-auto">
+            <div class="inner">
+              <p>OntoFood, Travail Pratique WebSementic.</p>
+            </div>
+          </footer>
+        </div>
+
+        <!-- A propos -->
+            <div style="color: black;" class="modal fade" id="downloadOntologie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Téléchargement de l'ontologie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    Clickez sur ce bouton pour telecharger l'ontologie
+                    <p class="lead mt-4">
+                      <a target="_blank" download="food.owl" href="{%static '/assets/food.owl'%}" class="btn btn-lg btn-primary">Télécharger</a>
+                    </p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+    
+   
+    <script src="{%static '/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{%static '/js/bootstrap.min.js' %}"></script>
+    
+</body>
+</html>

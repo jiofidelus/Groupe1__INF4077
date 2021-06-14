@@ -1,0 +1,58 @@
+ion-slides {
+  height: 70%;
+}
+
+.swiper-slide {
+  display: block;
+}
+
+.swiper-slide h4 {
+  margin-top: 0.2rem;
+}
+
+.swiper-slide img {
+  max-height: 50%;
+  max-width: 100%;
+  pointer-events: none;
+}
+
+b {
+  font-weight: 500;
+}
+
+p {
+  padding: 0 40px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ion-color-step-600, #60646b);
+}
+
+p b {
+  color: var(--ion-text-color, #000000);
+}
+
+ion-button {
+  text-transform: capitalize ;
+}
+
+ion-label a {
+  text-decoration: none;
+  color: black;
+}
+
+/*
+
+h1 {
+  font-weight: 600;
+  font-size: 2.5em;
+}
+
+h5 {
+  font-weight: 300;
+}
+
+ion-header {
+  background-color: white;
+}
+
+ */

@@ -1,0 +1,56 @@
+<!doctype html>
+{%load static%}
+<html lang="fr">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="{%static '/css/bootstrap.min.css'%}">
+
+    <title>OntoFood - Update</title>
+  </head>
+  <body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'home' %}">
+                  <img src="{%static '/assets/logo(white).png'%}" alt="" width="200" height="100">
+              </a>
+
+              <a class="navbar-brand" href="#">Page de mis a jour des ontologies</a>
+          </div>
+        </nav>
+      </header>
+
+    <main class="container">
+        <p>
+            &nbsp;
+            <!-- Juste pour l'espacement -->
+        </p>
+            <form action="{%url 'update' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="sujet" class="form-label">Entrer le sujet</label>
+                    <input type="text" class="form-control" id="sujet" name="subject" autofocus required>
+                </div>
+                <div class="mb-3">
+                    <label for="predicat" class="form-label">Entrer le predicat</label>
+                    <input type="text" class="form-control" id="predicat" name="predicate" autofocus required>
+                </div>
+                <div class="mb-3">
+                    <label for="objetHelp" class="form-label">Entrer l'objet</label>
+                    <input type="text" class="form-control" id="objet" aria-describedby="objetHelp" autofocus required name="object">
+                    <div id="objetHelp" class="form-text">S'il sagit d'un sujet, entrer l'URI.</div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Ajouter">
+            </form>
+    </main>
+
+    <script src="{%static '/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{%static '/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

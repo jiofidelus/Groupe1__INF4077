@@ -1,0 +1,102 @@
+{%load static%}
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{%static '/css/bootstrap.min.css'%}">
+    
+
+
+    <title>OntoFood</title>
+  </head>
+  <body>
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{%static '/assets/logo(white).png'%}" alt="" width="200" height="100">
+            </a>
+            <span style="width: 30px;"></span>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex" class="form-group" action="{% url 'displayQueryResults' %}" method="POST">
+              {% csrf_token %}
+                <div class="input-group input-group-lg">
+                    <input style="width: 1000px;" placeholder="Que recherchez vous ?" type="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="query" autofocus required>
+                </div>
+                <span style="width: 20px;"></span>
+              <button class="btn btn-lg btn-secondary" type="submit" >Rechercher</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+
+        <p>
+            &nbsp;
+            <!-- Juste pour l'espacement -->
+        </p>
+
+        <div class="row">
+            <div class="col-sm-12">
+              
+                
+                     
+                  
+               </div>
+               <div id="menu">
+                  
+              <ul id="res" style="list-style-type:circle">
+                {%for result in results%}
+                  
+                  <!-- <h4><u>{{result.subject}}</u></h4>
+                  <h5>{{result.predicate}}</h5>
+                  <p>{{result.object}}</p> -->
+                    <!-- <div class="mb-4">
+                      <h5 ><u>{{result.subject}}</u></h5>
+                      <a href="#"> {{result.predicate}}</a>
+                      <p >{{result.object}}</p>
+
+                    </div> -->
+                  
+                  
+                      
+
+                  <!-- <div class="card mb-4">
+                    <div class="card-body">
+                      <h5 class="card-title"><u>{{result.subject}}</u></h5>
+                      <a href="#"> {{result.predicate}}</a>
+                      <p class="card-text">{{result.object}}</p>
+                      
+                    </div>
+                  </div> -->
+                  
+                  <div class="card   mb-4" >
+                    <h4 class="card-header">
+                      <u>{{result.subject}}</u>
+                    </h4>
+                    <div class="card-body">
+                      <a class="card-title"><h5>{{result.predicate}}</h5></a>
+                      <h6 class="card-text">{{result.object}}</h6>
+
+                    </div>
+                  </div>
+
+                  
+                {%endfor%}
+              </ul>
+            </div>
+          </div>
+    </main>
+
+    <script src="{%static '/jQuery/jquery-3.3.1.min.js'%}"></script>
+    <script src="{%static '/bootstrap/js/bootstrap.min.js'%}"></script>
+    
+</body>
+</html>
