@@ -1,9 +1,0 @@
-{
-  "hosting": {
-    "public": "dist/projet-web-suep",
-    "rewrites": [{
-      "source": "**",
-      "destination": "/index.html"
-    }]
-  }
-}
