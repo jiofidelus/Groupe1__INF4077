@@ -1,0 +1,494 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY food "http://www.food.com/ontologies/food.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.food.com/ontologies/food.owl#"
+     xml:base="http://www.food.com/ontologies/food.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:food="http://www.food.com/ontologies/food.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.food.com/ontologies/food.owl">
+        <rdfs:comment>This is an Ontology of Local Foods Prepared and Eaten accross homes  in Cameroon.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Recipe -->
+
+    <owl:ObjectProperty rdf:about="&food;Recipe"/>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#canBeEatenWith -->
+
+    <owl:ObjectProperty rdf:about="&food;canBeEatenWith">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#isEatenWith -->
+
+    <owl:ObjectProperty rdf:about="&food;isEatenWith">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <owl:inverseOf rdf:resource="&food;canBeEatenWith"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#isNotEatenWith -->
+
+    <owl:ObjectProperty rdf:about="&food;isNotEatenWith">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#hasCalorificContentValue -->
+
+    <owl:DatatypeProperty rdf:about="&food;hasCalorificContentValue"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#BlackSauce -->
+
+    <owl:Class rdf:about="&food;BlackSauce">
+        <rdfs:subClassOf rdf:resource="&food;Sauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#CarrotSauce -->
+
+    <owl:Class rdf:about="&food;CarrotSauce">
+        <rdfs:subClassOf rdf:resource="&food;FruitSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Cassava -->
+
+    <owl:Class rdf:about="&food;Cassava">
+        <rdfs:subClassOf rdf:resource="&food;Tubers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Cereals -->
+
+    <owl:Class rdf:about="&food;Cereals">
+        <rdfs:subClassOf rdf:resource="&food;Complement"/>
+        <owl:disjointWith rdf:resource="&food;Tubers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Complement -->
+
+    <owl:Class rdf:about="&food;Complement">
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+        <owl:disjointWith rdf:resource="&food;Sauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#EgusiSauce -->
+
+    <owl:Class rdf:about="&food;EgusiSauce">
+        <rdfs:subClassOf rdf:resource="&food;Sauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Food -->
+
+    <owl:Class rdf:about="&food;Food"/>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#FruitSauce -->
+
+    <owl:Class rdf:about="&food;FruitSauce">
+        <rdfs:subClassOf rdf:resource="&food;Sauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#GroundnutSauce -->
+
+    <owl:Class rdf:about="&food;GroundnutSauce">
+        <rdfs:subClassOf rdf:resource="&food;Sauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#HighCalorieFood -->
+
+    <owl:Class rdf:about="&food;HighCalorieFood">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&food;Food"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&food;hasCalorificContentValue"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="&xsd;integer"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;integer">400</xsd:minInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#IrishPotatoes -->
+
+    <owl:Class rdf:about="&food;IrishPotatoes">
+        <rdfs:subClassOf rdf:resource="&food;Potatoes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#LowCalorieFood -->
+
+    <owl:Class rdf:about="&food;LowCalorieFood">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&food;Food"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&food;hasCalorificContentValue"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="&xsd;integer"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxExclusive rdf:datatype="&xsd;integer">400</xsd:maxExclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Maize -->
+
+    <owl:Class rdf:about="&food;Maize">
+        <rdfs:subClassOf rdf:resource="&food;Cereals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#OnionSauce -->
+
+    <owl:Class rdf:about="&food;OnionSauce">
+        <rdfs:subClassOf rdf:resource="&food;FruitSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Potatoes -->
+
+    <owl:Class rdf:about="&food;Potatoes">
+        <rdfs:subClassOf rdf:resource="&food;Tubers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Rice -->
+
+    <owl:Class rdf:about="&food;Rice">
+        <rdfs:subClassOf rdf:resource="&food;Cereals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Sauce -->
+
+    <owl:Class rdf:about="&food;Sauce">
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#SweetPotatoes -->
+
+    <owl:Class rdf:about="&food;SweetPotatoes">
+        <rdfs:subClassOf rdf:resource="&food;Potatoes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#SweetYams -->
+
+    <owl:Class rdf:about="&food;SweetYams">
+        <rdfs:subClassOf rdf:resource="&food;Yams"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#TomatoesSauce -->
+
+    <owl:Class rdf:about="&food;TomatoesSauce">
+        <rdfs:subClassOf rdf:resource="&food;FruitSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Tubers -->
+
+    <owl:Class rdf:about="&food;Tubers">
+        <rdfs:subClassOf rdf:resource="&food;Complement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Wheat -->
+
+    <owl:Class rdf:about="&food;Wheat">
+        <rdfs:subClassOf rdf:resource="&food;Cereals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#WhiteYams -->
+
+    <owl:Class rdf:about="&food;WhiteYams">
+        <rdfs:subClassOf rdf:resource="&food;Yams"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Yams -->
+
+    <owl:Class rdf:about="&food;Yams">
+        <rdfs:subClassOf rdf:resource="&food;Tubers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#YellowSauce -->
+
+    <owl:Class rdf:about="&food;YellowSauce">
+        <rdfs:subClassOf rdf:resource="&food;Sauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#YellowYams -->
+
+    <owl:Class rdf:about="&food;YellowYams">
+        <rdfs:subClassOf rdf:resource="&food;Yams"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleBlackSauce -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleBlackSauce">
+        <rdf:type rdf:resource="&food;BlackSauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleCarrotSauce -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleCarrotSauce">
+        <rdf:type rdf:resource="&food;CarrotSauce"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">300
+
+</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleCassava -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleCassava">
+        <rdf:type rdf:resource="&food;Cassava"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">1300</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleEgusiSauce -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleEgusiSauce">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&food;hasCalorificContentValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleGroundnutSauce -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleGroundnutSauce">
+        <rdf:type rdf:resource="&food;GroundnutSauce"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">300</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleMaize -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleMaize">
+        <rdf:type rdf:resource="&food;Maize"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">120
+</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleRice -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleRice">
+        <rdf:type rdf:resource="&food;Rice"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">500</hasCalorificContentValue>
+        <canBeEatenWith rdf:resource="&food;ExampleTomatoesSauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleSweetYams -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleSweetYams">
+        <rdf:type rdf:resource="&food;SweetYams"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">452</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleTomatoesSauce -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleTomatoesSauce">
+        <rdf:type rdf:resource="&food;TomatoesSauce"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">240</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleWheat -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleWheat">
+        <rdf:type rdf:resource="&food;Wheat"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">890</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleWhiteYams -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleWhiteYams">
+        <rdf:type rdf:resource="&food;WhiteYams"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">455</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleYellowYams -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleYellowYams">
+        <rdf:type rdf:resource="&food;YellowYams"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">670
+</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&food;BlackSauce"/>
+            <rdf:Description rdf:about="&food;EgusiSauce"/>
+            <rdf:Description rdf:about="&food;FruitSauce"/>
+            <rdf:Description rdf:about="&food;GroundnutSauce"/>
+            <rdf:Description rdf:about="&food;YellowSauce"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,135 @@
+
+{%load static%}
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{%static '/css/bootstrap.min.css'%}">
+    
+
+    <title>Connexion</title>
+  </head>
+
+  <header class="masthead mb-auto mt-3">
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Moteur de recherche</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}" >Inscription</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}" >Connexion</a>
+        </li>
+        <li class="nav-item" *ngIf="user.role == 'nutritioniste'">
+          <a class="nav-link" href="{% url 'verify' %}">Verify_Onto</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#downloadOntologie">Télecharger ontologie</a>
+       </li>
+        <!--li class="nav-item">
+            <div class="spinner-border" *ngIf="etat == null" role="status">
+                <span class="visually-hidden"></span>
+              </div>
+              <a class="nav-link" href="#">&nbsp;</a>
+          </li-->
+      </ul>
+  </header>
+  <body class="text-center">
+    {% comment %} <main class="container">
+      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+          <div class="inner">
+            <nav class="nav nav-masthead justify-content-center">
+              <a class="nav-link active" href="{% url 'home' %}">Moteur recherche</a>
+              <a class="nav-link" href="{% url 'register' %}">Inscription</a>
+              <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+              <a class="nav-link" href="{% url 'verify' %}">Mon compte</a>
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#downloadOntologie">Télecharger ontologie</a>
+            </nav>
+          </div>
+        </header>
+
+      <form class="form-signin"></form>
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <img class="mb-4" src="{%static '/assets/logo(white).png'%}" alt="" width="250" height="200">
+        </a>
+        <h1 class="h3 mb-3 font-weight-normal">Connecter vous ici</h1>
+        <label for="inputEmail" class="sr-only">Adresse email</label>
+        <input type="email" id="inputEmail" class="form-control mx-6" placeholder="Entrer votre adresse email" required autofocus>
+        <label for="inputPassword" class="sr-only">Mot de passe</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Entrer le mot de passe" required>
+    
+        <button class="mt-4 btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2021 @ Copyright - Travail Pratique Web Semantic</p>
+      </form>
+    </div> {% endcomment %}
+
+    <main class="container">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-sm-12 offset-md-4 col-md-4 mt-5">
+  
+            <h3 class="mb-5">Informations de connexion</h3>
+    
+            <!--div *ngIf="messageAlert" class="alert alert-danger" role="alert">
+              {{messageAlert}}
+            </div-->
+    
+            <form class="mb-2" #form="ngForm" (ngSubmit)="connexion(form)">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Votre adresse email</label>
+                <input type="email" [disabled]="isLoading" name="identifiant" required ngModel class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+    
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Votre mot de passe</label>
+                <input type="password" [disabled]="isLoading" name="password" required ngModel class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="text-center mt-5">
+                <button style="padding-left: 50px; padding-right: 50px; padding-bottom: 15px; padding-top: 10px; border-radius: 30px" type="submit" [disabled]="form.invalid || isLoading" class="btn btn-primary">Se connecter</button>
+              </div>
+              <!--div class="container-fluid mt-4">
+                <div class="text-center">
+                  <div class="spinner-border" *ngIf="isLoading" role="status">
+                    <span class="visually-hidden"></span>
+                  </div>
+                </div>
+              </div-->
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+          <!-- A propos -->
+            <div style="color: black;" class="modal fade" id="downloadOntologie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Téléchargement de l'ontologie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    Clickez sur ce bouton pour telecharger l'ontologie
+                    <p class="lead mt-4">
+                      <a target="_blank" download="food.owl" href="{%static '/assets/food.owl'%}" class="btn btn-lg btn-primary">Télécharger</a>
+                    </p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+      
+    <script src="{%static '/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{%static '/js/bootstrap.min.js' %}"></script>
+   
+    </body>
+
+</html>

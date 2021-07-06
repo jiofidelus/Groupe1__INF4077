@@ -1,0 +1,1154 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY food "http://www.food.com/ontologies/food.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.food.com/ontologies/food.owl#"
+     xml:base="http://www.food.com/ontologies/food.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:food="http://www.food.com/ontologies/food.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.food.com/ontologies/food.owl">
+        <rdfs:comment>This is an Ontology of Food and their nutritional values, reciepe and regions where they are commonly eaten.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#contains -->
+
+    <owl:ObjectProperty rdf:about="&food;contains">
+        <rdfs:domain rdf:resource="&food;Complement"/>
+        <rdfs:range rdf:resource="&food;Nutrients"/>
+        <rdfs:domain rdf:resource="&food;Sauce"/>
+        <rdfs:domain rdf:resource="&food;Vegetables"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#isAregionOf -->
+
+    <owl:ObjectProperty rdf:about="&food;isAregionOf">
+        <rdfs:range rdf:resource="&food;Countries"/>
+        <rdfs:domain rdf:resource="&food;Region"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#isEatenIn -->
+
+    <owl:ObjectProperty rdf:about="&food;isEatenIn">
+        <rdfs:domain rdf:resource="&food;Complement"/>
+        <rdfs:range rdf:resource="&food;Countries"/>
+        <rdfs:range rdf:resource="&food;Region"/>
+        <rdfs:domain rdf:resource="&food;Sauce"/>
+        <rdfs:domain rdf:resource="&food;Vegetables"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#isEatenWith -->
+
+    <owl:ObjectProperty rdf:about="&food;isEatenWith">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:range rdf:resource="&food;Complement"/>
+        <rdfs:domain rdf:resource="&food;Complement"/>
+        <rdfs:domain rdf:resource="&food;Sauce"/>
+        <rdfs:range rdf:resource="&food;Sauce"/>
+        <rdfs:range rdf:resource="&food;Vegetables"/>
+        <rdfs:domain rdf:resource="&food;Vegetables"/>
+        <owl:propertyDisjointWith rdf:resource="&food;isNotEatenWith"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#isNotEatenWith -->
+
+    <owl:ObjectProperty rdf:about="&food;isNotEatenWith">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#contains -->
+
+    <owl:DatatypeProperty rdf:about="&food;contains">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#hasCalorificContentValue -->
+
+    <owl:DatatypeProperty rdf:about="&food;hasCalorificContentValue"/>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#hasDescription -->
+
+    <owl:DatatypeProperty rdf:about="&food;hasDescription">
+        <rdfs:domain rdf:resource="&food;Complement"/>
+        <rdfs:domain rdf:resource="&food;Countries"/>
+        <rdfs:domain rdf:resource="&food;Region"/>
+        <rdfs:domain rdf:resource="&food;Sauce"/>
+        <rdfs:domain rdf:resource="&food;Vegetables"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#hasName -->
+
+    <owl:DatatypeProperty rdf:about="&food;hasName">
+        <rdfs:domain rdf:resource="&food;Region"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#hasRecipe -->
+
+    <owl:DatatypeProperty rdf:about="&food;hasRecipe">
+        <rdfs:domain rdf:resource="&food;Complement"/>
+        <rdfs:domain rdf:resource="&food;Sauce"/>
+        <rdfs:domain rdf:resource="&food;Vegetables"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#isLocallyCalled -->
+
+    <owl:DatatypeProperty rdf:about="&food;isLocallyCalled">
+        <rdfs:domain rdf:resource="&food;Complement"/>
+        <rdfs:domain rdf:resource="&food;Sauce"/>
+        <rdfs:domain rdf:resource="&food;Vegetables"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Achu -->
+
+    <owl:Class rdf:about="&food;Achu">
+        <rdfs:subClassOf rdf:resource="&food;Others"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#AchuSauce -->
+
+    <owl:Class rdf:about="&food;AchuSauce">
+        <rdfs:subClassOf rdf:resource="&food;Sauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Adamawa -->
+
+    <owl:Class rdf:about="&food;Adamawa">
+        <rdfs:subClassOf rdf:resource="&food;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#BlackSauce -->
+
+    <owl:Class rdf:about="&food;BlackSauce">
+        <rdfs:subClassOf rdf:resource="&food;AchuSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Cameroon -->
+
+    <owl:Class rdf:about="&food;Cameroon">
+        <rdfs:subClassOf rdf:resource="&food;Countries"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Carbohydrate -->
+
+    <owl:Class rdf:about="&food;Carbohydrate">
+        <rdfs:subClassOf rdf:resource="&food;Nutrients"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#CarrotSauce -->
+
+    <owl:Class rdf:about="&food;CarrotSauce">
+        <rdfs:subClassOf rdf:resource="&food;FruitSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Cassava -->
+
+    <owl:Class rdf:about="&food;Cassava">
+        <rdfs:subClassOf rdf:resource="&food;Tubers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Center -->
+
+    <owl:Class rdf:about="&food;Center">
+        <rdfs:subClassOf rdf:resource="&food;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Cereals -->
+
+    <owl:Class rdf:about="&food;Cereals">
+        <rdfs:subClassOf rdf:resource="&food;Complement"/>
+        <owl:disjointWith rdf:resource="&food;Tubers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Complement -->
+
+    <owl:Class rdf:about="&food;Complement">
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Countries -->
+
+    <owl:Class rdf:about="&food;Countries">
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#EgusiSauce -->
+
+    <owl:Class rdf:about="&food;EgusiSauce">
+        <rdfs:subClassOf rdf:resource="&food;OtherSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Eru -->
+
+    <owl:Class rdf:about="&food;Eru">
+        <rdfs:subClassOf rdf:resource="&food;Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Food -->
+
+    <owl:Class rdf:about="&food;Food"/>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#FruitSauce -->
+
+    <owl:Class rdf:about="&food;FruitSauce">
+        <rdfs:subClassOf rdf:resource="&food;Sauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#FuFu_Corn -->
+
+    <owl:Class rdf:about="&food;FuFu_Corn">
+        <rdfs:subClassOf rdf:resource="&food;Others"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Gabon -->
+
+    <owl:Class rdf:about="&food;Gabon">
+        <rdfs:subClassOf rdf:resource="&food;Countries"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Green -->
+
+    <owl:Class rdf:about="&food;Green">
+        <rdfs:subClassOf rdf:resource="&food;Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#GroundnutSauce -->
+
+    <owl:Class rdf:about="&food;GroundnutSauce">
+        <rdfs:subClassOf rdf:resource="&food;OtherSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#HighCalorieFood -->
+
+    <owl:Class rdf:about="&food;HighCalorieFood">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&food;Food"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&food;hasCalorificContentValue"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="&xsd;integer"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minInclusive rdf:datatype="&xsd;integer">400</xsd:minInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#IrishPotatoes -->
+
+    <owl:Class rdf:about="&food;IrishPotatoes">
+        <rdfs:subClassOf rdf:resource="&food;Potatoes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Littoral -->
+
+    <owl:Class rdf:about="&food;Littoral">
+        <rdfs:subClassOf rdf:resource="&food;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#LowCalorieFood -->
+
+    <owl:Class rdf:about="&food;LowCalorieFood">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&food;Food"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&food;hasCalorificContentValue"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="&xsd;integer"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxExclusive rdf:datatype="&xsd;integer">400</xsd:maxExclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Maize -->
+
+    <owl:Class rdf:about="&food;Maize">
+        <rdfs:label rdf:datatype="&xsd;string">Maize</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&food;Cereals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Minerals -->
+
+    <owl:Class rdf:about="&food;Minerals">
+        <rdfs:subClassOf rdf:resource="&food;Nutrients"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Njama_Njama -->
+
+    <owl:Class rdf:about="&food;Njama_Njama">
+        <rdfs:subClassOf rdf:resource="&food;Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#NorthWest -->
+
+    <owl:Class rdf:about="&food;NorthWest">
+        <rdfs:subClassOf rdf:resource="&food;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Nutrients -->
+
+    <owl:Class rdf:about="&food;Nutrients">
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#OnionSauce -->
+
+    <owl:Class rdf:about="&food;OnionSauce">
+        <rdfs:subClassOf rdf:resource="&food;FruitSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#OtherSauce -->
+
+    <owl:Class rdf:about="&food;OtherSauce">
+        <rdfs:subClassOf rdf:resource="&food;Sauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Others -->
+
+    <owl:Class rdf:about="&food;Others">
+        <rdfs:subClassOf rdf:resource="&food;Complement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Potatoes -->
+
+    <owl:Class rdf:about="&food;Potatoes">
+        <rdfs:subClassOf rdf:resource="&food;Tubers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Protein -->
+
+    <owl:Class rdf:about="&food;Protein">
+        <rdfs:subClassOf rdf:resource="&food;Nutrients"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Region -->
+
+    <owl:Class rdf:about="&food;Region">
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Rice -->
+
+    <owl:Class rdf:about="&food;Rice">
+        <rdfs:subClassOf rdf:resource="&food;Cereals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Sauce -->
+
+    <owl:Class rdf:about="&food;Sauce">
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Senegal -->
+
+    <owl:Class rdf:about="&food;Senegal">
+        <rdfs:subClassOf rdf:resource="&food;Countries"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#SouthWest -->
+
+    <owl:Class rdf:about="&food;SouthWest">
+        <rdfs:subClassOf rdf:resource="&food;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#SweetPotatoes -->
+
+    <owl:Class rdf:about="&food;SweetPotatoes">
+        <rdfs:subClassOf rdf:resource="&food;Potatoes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#SweetYams -->
+
+    <owl:Class rdf:about="&food;SweetYams">
+        <rdfs:subClassOf rdf:resource="&food;Yams"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Tchad -->
+
+    <owl:Class rdf:about="&food;Tchad">
+        <rdfs:subClassOf rdf:resource="&food;Countries"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#TomatoesSauce -->
+
+    <owl:Class rdf:about="&food;TomatoesSauce">
+        <rdfs:subClassOf rdf:resource="&food;FruitSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Tubers -->
+
+    <owl:Class rdf:about="&food;Tubers">
+        <rdfs:subClassOf rdf:resource="&food;Complement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Vegetables -->
+
+    <owl:Class rdf:about="&food;Vegetables">
+        <rdfs:subClassOf rdf:resource="&food;Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Vitamins -->
+
+    <owl:Class rdf:about="&food;Vitamins">
+        <rdfs:subClassOf rdf:resource="&food;Nutrients"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Water_Fufu -->
+
+    <owl:Class rdf:about="&food;Water_Fufu">
+        <rdfs:subClassOf rdf:resource="&food;Others"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#West -->
+
+    <owl:Class rdf:about="&food;West">
+        <rdfs:subClassOf rdf:resource="&food;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Wheat -->
+
+    <owl:Class rdf:about="&food;Wheat">
+        <rdfs:subClassOf rdf:resource="&food;Cereals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#WhiteYams -->
+
+    <owl:Class rdf:about="&food;WhiteYams">
+        <rdfs:subClassOf rdf:resource="&food;Yams"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Yams -->
+
+    <owl:Class rdf:about="&food;Yams">
+        <rdfs:subClassOf rdf:resource="&food;Tubers"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#YelloowSauce -->
+
+    <owl:Class rdf:about="&food;YelloowSauce">
+        <rdfs:subClassOf rdf:resource="&food;AchuSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#YellowYams -->
+
+    <owl:Class rdf:about="&food;YellowYams">
+        <rdfs:subClassOf rdf:resource="&food;Yams"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#kati_kati -->
+
+    <owl:Class rdf:about="&food;kati_kati">
+        <rdfs:subClassOf rdf:resource="&food;Sauce"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Achu -->
+
+    <owl:NamedIndividual rdf:about="&food;Achu">
+        <rdf:type rdf:resource="&food;Achu"/>
+        <isLocallyCalled rdf:datatype="&xsd;string">Taro</isLocallyCalled>
+        <hasRecipe rdf:datatype="&xsd;string">•	Hub: A hub is a networking device that provides a central connection point for devices on a network.
+•	Switch:A switch is a network device with multiple ports in one network whose task is to copy frames from one port to another.
+•	NIC (Network Interface Card): A NIC is a networking circuit that enables a computer to connect and participate in a network.
+•	Network Cables: these are cables use to connect devices on a network. They include twisted pairs and coaxial cables, optical fibers.
+•	Wireless Access Point (WAP): it’s a device that enables Wi-Fi devices to connect to a network.
+</hasRecipe>
+        <isEatenIn rdf:resource="&food;North_West"/>
+        <isEatenIn rdf:resource="&food;West"/>
+        <isEatenIn rdf:resource="&food;cameroon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Center -->
+
+    <owl:NamedIndividual rdf:about="&food;Center">
+        <rdf:type rdf:resource="&food;Center"/>
+        <hasDescription rdf:datatype="&xsd;string">Région du Centre
+Cameroun
+La région du Centre est l&apos;une des dix régions du Cameroun, située dans le centre du pays. Son chef-lieu est Yaoundé, qui est aussi la capitale du pays. Elle a une superficie de 68 953 km². Wikipédia
+Superficie : 68 953 km²
+Population : 4,16 millions (2015)
+Destinations : Yaoundé, Mbalmayo, Obala, Mfoundi, Ebogo, Bafia, PLUS
+Universités : Université Yaoundé I, Université Yaoundé II, PLUS
+Clubs et équipes : AS Forces Armées, Canon Yaoundé, PLUS</hasDescription>
+        <hasName rdf:datatype="&xsd;string">Yaounde</hasName>
+        <isAregionOf rdf:resource="&food;cameroon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Dakar -->
+
+    <owl:NamedIndividual rdf:about="&food;Dakar">
+        <rdf:type rdf:resource="&food;Region"/>
+        <isAregionOf rdf:resource="&food;Senegal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Eru -->
+
+    <owl:NamedIndividual rdf:about="&food;Eru">
+        <rdf:type rdf:resource="&food;Eru"/>
+        <isLocallyCalled rdf:datatype="&xsd;string">Bakweri leaves</isLocallyCalled>
+        <hasRecipe rdf:datatype="&xsd;string">•	Hub: A hub is a networking device that provides a central connection point for devices on a network.
+•	Switch:A switch is a network device with multiple ports in one network whose task is to copy frames from one port to another.
+•	NIC (Network Interface Card): A NIC is a networking circuit that enables a computer to connect and participate in a network.
+•	Network Cables: these are cables use to connect devices on a network. They include twisted pairs and coaxial cables, optical fibers.
+•	Wireless Access Point (WAP): it’s a device that enables Wi-Fi devices to connect to a network.
+</hasRecipe>
+        <isEatenIn rdf:resource="&food;Center"/>
+        <isEatenIn rdf:resource="&food;North_West"/>
+        <isEatenIn rdf:resource="&food;South_West"/>
+        <isEatenIn rdf:resource="&food;West"/>
+        <isEatenIn rdf:resource="&food;cameroon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleAchu -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleAchu">
+        <rdf:type rdf:resource="&food;Achu"/>
+        <hasRecipe rdf:datatype="&xsd;string">1-Boil Coco Yams
+2- cook well
+3- when ready pound and Serve</hasRecipe>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">256</hasCalorificContentValue>
+        <isEatenWith rdf:resource="&food;ExampleBlackSauce"/>
+        <isEatenIn rdf:resource="&food;ExampleNorthWest"/>
+        <isEatenIn rdf:resource="&food;ExampleWest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleBlackSauce -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleBlackSauce">
+        <rdf:type rdf:resource="&food;BlackSauce"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">587</hasCalorificContentValue>
+        <isEatenWith rdf:resource="&food;ExampleAchu"/>
+        <isEatenIn rdf:resource="&food;ExampleNorthWest"/>
+        <isEatenIn rdf:resource="&food;ExampleWest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleCarrotSauce -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleCarrotSauce">
+        <rdf:type rdf:resource="&food;CarrotSauce"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">300
+
+</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleCassava -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleCassava">
+        <rdf:type rdf:resource="&food;Cassava"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">1300</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleEgusiSauce -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleEgusiSauce">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&food;hasCalorificContentValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleEru -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleEru">
+        <rdf:type rdf:resource="&food;Eru"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">122</hasCalorificContentValue>
+        <isLocallyCalled rdf:datatype="&xsd;string">Eru</isLocallyCalled>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleFufuCorn -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleFufuCorn">
+        <rdf:type rdf:resource="&food;FuFu_Corn"/>
+        <isLocallyCalled rdf:datatype="&xsd;string">Aban 
+Fufu</isLocallyCalled>
+        <isEatenWith rdf:resource="&food;ExampleHuggleBerry"/>
+        <isEatenIn rdf:resource="&food;ExampleNorthWest"/>
+        <isEatenIn rdf:resource="&food;ExampleSouthWest"/>
+        <isEatenIn rdf:resource="&food;ExampleWest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleGroundnutSauce -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleGroundnutSauce">
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">300</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleHuggleBerry -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleHuggleBerry">
+        <rdf:type rdf:resource="&food;Njama_Njama"/>
+        <isLocallyCalled rdf:datatype="&xsd;string">Njama Njama
+</isLocallyCalled>
+        <isEatenIn rdf:resource="&food;ExampleNorthWest"/>
+        <isEatenIn rdf:resource="&food;ExampleSouthWest"/>
+        <isEatenIn rdf:resource="&food;ExampleWest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleNorthWest -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleNorthWest">
+        <rdf:type rdf:resource="&food;NorthWest"/>
+        <hasName rdf:datatype="&xsd;string">North West Region -- The Grass land Region</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleRice -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleRice">
+        <rdf:type rdf:resource="&food;Rice"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">500</hasCalorificContentValue>
+        <contains rdf:resource="&food;Minerals"/>
+        <contains rdf:resource="&food;Vitamins"/>
+        <contains rdf:resource="&food;carbohydrates"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleSouthWest -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleSouthWest">
+        <rdf:type rdf:resource="&food;SouthWest"/>
+        <isLocallyCalled rdf:datatype="&xsd;string">South West Region - The land of Mount Cameroon
+</isLocallyCalled>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleSweetYams -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleSweetYams">
+        <rdf:type rdf:resource="&food;SweetYams"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">452</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleTomatoesSauce -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleTomatoesSauce">
+        <rdf:type rdf:resource="&food;TomatoesSauce"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">240</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleWaterfufu -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleWaterfufu">
+        <rdf:type rdf:resource="&food;Water_Fufu"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">454</hasCalorificContentValue>
+        <isLocallyCalled rdf:datatype="&xsd;string">WaterFufu</isLocallyCalled>
+        <isEatenWith rdf:resource="&food;ExampleEru"/>
+        <isEatenIn rdf:resource="&food;ExampleNorthWest"/>
+        <isEatenIn rdf:resource="&food;ExampleSouthWest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleWest -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleWest">
+        <rdf:type rdf:resource="&food;West"/>
+        <hasName rdf:datatype="&xsd;string">West Region - The land of the Sultan</hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleWheat -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleWheat">
+        <rdf:type rdf:resource="&food;Wheat"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">890</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleWhiteYams -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleWhiteYams">
+        <rdf:type rdf:resource="&food;WhiteYams"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">455</hasCalorificContentValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#ExampleYellowYams -->
+
+    <owl:NamedIndividual rdf:about="&food;ExampleYellowYams">
+        <rdf:type rdf:resource="&food;YellowYams"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">670
+</hasCalorificContentValue>
+        <isNotEatenWith rdf:resource="&food;ExampleCarrotSauce"/>
+        <isNotEatenWith rdf:resource="&food;ExampleEgusiSauce"/>
+        <isNotEatenWith rdf:resource="&food;ExampleGroundnutSauce"/>
+        <isNotEatenWith rdf:resource="&food;ExampleHuggleBerry"/>
+        <isNotEatenWith rdf:resource="&food;ExampleTomatoesSauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Gabon -->
+
+    <owl:NamedIndividual rdf:about="&food;Gabon">
+        <rdf:type rdf:resource="&food;Gabon"/>
+        <isEatenIn rdf:resource="&food;malo_aki"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Maize -->
+
+    <owl:NamedIndividual rdf:about="&food;Maize">
+        <rdf:type rdf:resource="&food;Maize"/>
+        <hasCalorificContentValue rdf:datatype="&xsd;integer">120</hasCalorificContentValue>
+        <hasRecipe rdf:datatype="&xsd;string">Boil cook or allow it to season on the fire well it denpesns on what you want </hasRecipe>
+        <hasDescription rdf:datatype="&xsd;string">Maïs
+Plante
+Le maïs, appelé blé d’Inde au Canada, est une plante herbacée tropicale annuelle de la famille des Poacées, largement cultivée comme céréale pour ses grains riches en amidon, mais aussi comme plante fourragère. Le terme désigne aussi le grain de maïs lui-même. Wikipédia
+Nom scientifique : Zea mays
+Sous-famille : Panicoideae
+Famille : Poaceae
+Sous-classe : Commelinidae
+Classe : Liliopsida</hasDescription>
+        <isEatenWith rdf:resource="&food;ExampleTomatoesSauce"/>
+        <contains rdf:resource="&food;carbohydrates"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Minerals -->
+
+    <owl:NamedIndividual rdf:about="&food;Minerals">
+        <rdf:type rdf:resource="&food;Minerals"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#North_West -->
+
+    <owl:NamedIndividual rdf:about="&food;North_West">
+        <rdf:type rdf:resource="&food;NorthWest"/>
+        <hasDescription rdf:datatype="&xsd;string">La région du Nord-Ouest, qui constitue une partie du territoire du Southern Cameroons, est l&apos;une des dix régions du Cameroun et l&apos;une des deux régions anglophones du pays. Son chef-lieu est Bamenda. Wikipédia
+Superficie : 17 300 km²
+Départements : Boyo; Bui; Donga-Mantung; Menchum; Mezam; Momo; Ngo-Ketunjia
+Population : 1,969 million (2015)
+Université : Université catholique du Cameroun
+Clubs et équipes : PWD Social Club Bamenda, Yong Sports Academy de Bamenda, Kumbo Strikers Football Club</hasDescription>
+        <isAregionOf rdf:resource="&food;cameroon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Proteins -->
+
+    <owl:NamedIndividual rdf:about="&food;Proteins">
+        <rdf:type rdf:resource="&food;Protein"/>
+        <hasDescription rdf:datatype="&xsd;string">Protéine
+Les protéines ont été définies comme étant des macromolécules biologiques présentes dans toutes les cellules vivantes, mais des travaux récents montrent qu&apos;il existe aussi des centaines voire des milliers de micro- ou nano-protéines. Elles sont formées d&apos;une ou de plusieurs chaînes polypeptidiques</hasDescription>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Senegal -->
+
+    <owl:NamedIndividual rdf:about="&food;Senegal">
+        <rdf:type rdf:resource="&food;Senegal"/>
+        <hasDescription rdf:datatype="&xsd;string">Sénégal
+Pays en Afrique de l&apos;Ouest
+Le Sénégal est un pays situé sur la côte ouest de l&apos;Afrique et doté d&apos;un héritage colonial français et de nombreuses attractions naturelles. Dakar, la capitale, comprend le quartier historique de la Médina et le célèbre musée Théodore Monod, exposant des œuvres d&apos;art africain. Elle est également réputée pour sa vie nocturne, centrée sur la musique mbalax, originaire du Sénégal. Saint-Louis, ancienne capitale de l&apos;Afrique-Occidentale française, abrite une vieille ville à l&apos;architecture coloniale. ― Google
+Capitale : Dakar
+Indicatif téléphonique : +221
+Président : Macky Sall
+Devise : Franc CFA
+Population : 16,3 millions (2019) Banque mondiale</hasDescription>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#South_West -->
+
+    <owl:NamedIndividual rdf:about="&food;South_West">
+        <rdf:type rdf:resource="&food;SouthWest"/>
+        <hasDescription rdf:datatype="&xsd;string">Région du Sud-Ouest
+Cameroun
+La Région du Sud-Ouest est l&apos;une des dix régions du Cameroun, située dans le sud-ouest du pays et frontalière du Nigéria. Son chef-lieu est Buéa. Wikipédia
+Superficie : 25 410 km²
+Population : 1,553 million (2015)
+Destinations : Limbé, Buéa, Parc National de Korup, Kumba, Wouri, PLUS
+Clubs et équipes : Mont Cameroun FC, Tiko United
+Université : Université de Buéa</hasDescription>
+        <isAregionOf rdf:resource="&food;cameroon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Tchad -->
+
+    <owl:NamedIndividual rdf:about="&food;Tchad">
+        <rdf:type rdf:resource="&food;Tchad"/>
+        <hasDescription rdf:datatype="&xsd;string">Tchad
+Pays en Afrique centrale
+Le Tchad, en forme longue la république du Tchad, est un pays d&apos;Afrique centrale sans accès à la mer, frontalier de la Libye au nord, du Niger à l&apos;ouest, du Nigeria à l&apos;ouest-sud-ouest, du Cameroun au sud-sud-ouest, de la République centrafricaine au sud et du Soudan à l&apos;est. Sa capitale est N&apos;Djaména. Wikipédia
+Capitale : N&apos;Djamena
+Superficie : 1,284 million km²
+Population : 15,95 millions (2019) Banque mondiale
+Langues officielles : Français, Arabe
+Gouvernement : État unitaire, Régime présidentiel</hasDescription>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#Vitamins -->
+
+    <owl:NamedIndividual rdf:about="&food;Vitamins">
+        <rdf:type rdf:resource="&food;Vitamins"/>
+        <hasDescription rdf:datatype="&xsd;string">vitamins
+Les vitamins ont été définies comme étant des macromolécules biologiques présentes dans toutes les cellules vivantes, mais des travaux récents montrent qu&apos;il existe aussi des centaines voire des milliers de micro- ou nano-protéines. Elles sont formées d&apos;une ou de plusieurs chaînes polypeptidiques</hasDescription>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#West -->
+
+    <owl:NamedIndividual rdf:about="&food;West">
+        <rdf:type rdf:resource="&food;West"/>
+        <isAregionOf rdf:resource="&food;cameroon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#cameroon -->
+
+    <owl:NamedIndividual rdf:about="&food;cameroon">
+        <rdf:type rdf:resource="&food;Cameroon"/>
+        <hasName rdf:datatype="&xsd;string">Cameroon</hasName>
+        <hasDescription rdf:datatype="&xsd;string">Le Cameroun, en forme longue la république du Cameroun, est un pays d&apos;Afrique centrale, situé entre le Nigéria au nord-nord-ouest, le Tchad au nord-nord-est, la République centrafricaine à l&apos;est, la république du Congo au sud-est, le Gabon au sud, la Guinée équatoriale au sud-ouest et le golfe de Guinée au sud-ouest. Wikipédia
+Capitale : Yaoundé
+Superficie : 475 442 km²
+Président : Paul Biya
+Premier ministre : Joseph Dion Ngute
+Population : 25,88 millions (2019) Banque mondiale</hasDescription>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#carbohydrates -->
+
+    <owl:NamedIndividual rdf:about="&food;carbohydrates">
+        <rdf:type rdf:resource="&food;Carbohydrate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#fufu -->
+
+    <owl:NamedIndividual rdf:about="&food;fufu">
+        <rdf:type rdf:resource="&food;FuFu_Corn"/>
+        <hasRecipe rdf:datatype="&xsd;string">North-West and South West situation report (1-31 May 2021 ) — Just over two per cent of the 2021 funding requirements for the humanitarian response for the ...</hasRecipe>
+        <isEatenWith rdf:resource="&food;ExampleEgusiSauce"/>
+        <isEatenWith rdf:resource="&food;ExampleEru"/>
+        <isEatenWith rdf:resource="&food;ExampleGroundnutSauce"/>
+        <isEatenWith rdf:resource="&food;ExampleHuggleBerry"/>
+        <isEatenWith rdf:resource="&food;ExampleTomatoesSauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#kati_kati -->
+
+    <owl:NamedIndividual rdf:about="&food;kati_kati">
+        <rdf:type rdf:resource="&food;kati_kati"/>
+        <contains rdf:datatype="&xsd;string">Protein</contains>
+        <contains rdf:datatype="&xsd;string">Vitamins</contains>
+        <isEatenIn rdf:resource="&food;ExampleWaterfufu"/>
+        <isEatenIn rdf:resource="&food;North_West"/>
+        <isEatenIn rdf:resource="&food;South_West"/>
+        <isEatenIn rdf:resource="&food;cameroon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#malo_aki -->
+
+    <owl:NamedIndividual rdf:about="&food;malo_aki">
+        <rdf:type rdf:resource="&food;GroundnutSauce"/>
+        <hasRecipe rdf:datatype="&xsd;string"></hasRecipe>
+        <hasRecipe rdf:datatype="&xsd;string">•	Hub: A hub is a networking device that provides a central connection point for devices on a network.
+•	Switch:A switch is a network device with multiple ports in one network whose task is to copy frames from one port to another.
+•	NIC (Network Interface Card): A NIC is a networking circuit that enables a computer to connect and participate in a network.
+•	Network Cables: these are cables use to connect devices on a network. They include twisted pairs and coaxial cables, optical fibers.
+•	Wireless Access Point (WAP): it’s a device that enables Wi-Fi devices to connect to a network.
+</hasRecipe>
+        <isEatenIn rdf:resource="&food;Senegal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.food.com/ontologies/food.owl#rice -->
+
+    <owl:NamedIndividual rdf:about="&food;rice">
+        <rdf:type rdf:resource="&food;Rice"/>
+        <hasName rdf:datatype="&xsd;string">riz</hasName>
+        <hasDescription rdf:datatype="&xsd;string">riz
+Plante
+Le maïs, appelé blé d’Inde au Canada, est une plante herbacée tropicale annuelle de la famille des Poacées, largement cultivée comme céréale pour ses grains riches en amidon, mais aussi comme plante fourragère. Le terme désigne aussi le grain de maïs lui-même. Wikipédia
+Nom scientifique : Zea mays
+Sous-famille : Panicoideae
+Famille : Poaceae
+Sous-classe : Commelinidae
+Classe : Liliopsida</hasDescription>
+        <isEatenIn rdf:resource="&food;Center"/>
+        <isEatenIn rdf:resource="&food;Dakar"/>
+        <isEatenIn rdf:resource="&food;ExampleNorthWest"/>
+        <isEatenIn rdf:resource="&food;Gabon"/>
+        <isEatenIn rdf:resource="&food;North_West"/>
+        <isEatenIn rdf:resource="&food;Senegal"/>
+        <isEatenIn rdf:resource="&food;South_West"/>
+        <isEatenIn rdf:resource="&food;cameroon"/>
+        <isEatenIn rdf:resource="&food;rice"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

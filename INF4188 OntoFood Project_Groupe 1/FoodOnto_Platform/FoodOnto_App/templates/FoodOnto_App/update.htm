@@ -1,0 +1,100 @@
+<!doctype html>
+{%load static%}
+<html lang="fr">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="{%static '/css/bootstrap.min.css'%}">
+
+    <title>OntoFood - Update</title>
+  </head>
+  <body>
+    <header>
+        <!-- Fixed navbar -->
+                <!-- Fixed navbar -->
+                <nav class="navbar navbar-expand-md ">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="{% url 'home' %}">
+                            <img src="{%static '/assets/logo.png'%}" alt="" width="200" height="100">
+                        </a>
+          
+                        <a class="navbar-brand" href="#">update des ontologies</a>
+                        <ul class="nav justify-content-end">
+                          <li class="nav-item">
+                              <a class="nav-link" href="{% url 'home' %}">Moteur de recherche</a>
+                            </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}" >Inscription</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}" >Connexion</a>
+                          </li>
+                          <li class="nav-item" >
+                            <a class="nav-link" href="{% url 'verify' %}" >Verify_Onto</a>
+                          </li>
+                          <li>
+                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#downloadOntologie">Télecharger ontologie</a>
+                          </li>
+                    </div>
+                    
+                      
+                      <!--li class="nav-item">
+                          <div class="spinner-border" *ngIf="etat == null" role="status">
+                              <span class="visually-hidden"></span>
+                            </div>
+                            <a class="nav-link" href="#">&nbsp;</a>
+                        </li-->
+                    </ul>
+                  </nav>
+      </header>
+
+    <main class="container">
+        <p>
+            &nbsp;
+            <!-- Juste pour l'espacement -->
+        </p>
+            <form action="{%url 'update' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="sujet" class="form-label">Entrer le sujet</label>
+                    <input type="text" class="form-control" id="subject" name="subject" autofocus required>
+                </div>
+                <div class="mb-3">
+                  <label for="predicat" class="form-label">Entrer le predicat</label>
+                  <input list="predicates" type="text" class="form-control" id="predicate" name="predicate" autofocus required>
+                  <datalist id="predicates">
+                    <option value="subClassOf">
+                    <option value="isEatenIn">
+                    <option value="isNotEatenWith">
+                    <option value="isEatenWith">
+                    <option value="hasCalorificContentValue">
+                    <option value="hasName">
+                    <option value="hasRecipe">
+                    <option value="isLocallyCalled">
+                  </datalist>
+
+
+                  <!-- <select name="dropdown" id="">
+                    <option value="isEatenIn">isEatenIn</option>
+                    <option value="isEatenWith">isEatenWith</option>
+                    <option value="hasCalloricValue">hasCalloricValue</option>
+                  </select> -->
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="objetHelp" class="form-label">Entrer l'objet</label>
+                    <input type="text" class="form-control" id="object" aria-describedby="objetHelp" autofocus required name="object">
+                    <div id="objetHelp" class="form-text">S'il sagit d'un sujet, entrer l'URI.</div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Ajouter">
+            </form>
+    </main>
+
+    <script src="{%static '/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{%static '/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

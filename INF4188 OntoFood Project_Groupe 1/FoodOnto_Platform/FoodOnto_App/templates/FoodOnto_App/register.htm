@@ -1,0 +1,128 @@
+{%load static%}
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="{%static '/css/bootstrap.min.css'%}">
+  
+
+    <title>OntoFood</title>
+
+  </head>
+
+  <header class="masthead mb-auto mt-3">
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Moteur de recherche</a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Inscription</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+      </li>
+      <li class="nav-item" *ngIf="user.role == 'nutritioniste'">
+        <a class="nav-link" href="{% url 'verify' %}">Verify_Onto</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#downloadOntologie">Télecharger ontologie</a>
+     </li>
+      <!--li class="nav-item">
+          <div class="spinner-border" *ngIf="etat == null" role="status">
+              <span class="visually-hidden"></span>
+            </div>
+            <a class="nav-link" href="#">&nbsp;</a>
+        </li-->
+    </ul>
+  </header>
+            <body class="text-center">
+
+              <main class="container">
+                <div class="container">
+                  <div class="row mt-5">
+                    <div class="col-sm-12 offset-md-4 col-md-4 mt-5">
+                    
+                      <h3 class="mb-5">Informations d'inscription</h3>
+              
+                      <!--div *ngIf="messageAlert" class="alert alert-danger" role="alert">
+                        {{messageAlert}}
+                      </div-->
+              
+                      <form class="mb-2" #form="ngForm" (ngSubmit)="inscription(form)">
+              
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Votre nom</label>
+                          <input name="nom" ngModel required [disabled]="isLoading" type="text" class="form-control" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Votre prenom</label>
+                          <input name="prenom" ngModel required [disabled]="isLoading" type="text" class="form-control" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Votre adresse email</label>
+                          <input name="email" ngModel required [disabled]="isLoading" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+              
+                        <div class="mb-3">
+                          <label for="exampleInputStatut" class="form-label">Votre statut</label>
+                          <select name="statut" class="custom-select d-block w-100 form-control" ngModel required id="exampleInputStatut" required>
+                            <option value="">Faites un choix...</option>
+                            <option value="client">Client</option>
+                            <option value="nutritioniste">Nutritioniste</option>
+                          </select>
+                        </div>
+              
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Votre mot de passe</label>
+                          <input minlength="6" name="password" [disabled]="isLoading" ngModel required type="password" class="form-control" id="exampleInputPassword1">
+                          <div class="form-text">6 Caractères minimum</div>
+                        </div>
+                        <div class="text-center mt-5">
+                          <button style="padding-left: 50px; padding-right: 50px; padding-bottom: 15px; padding-top: 10px; border-radius: 30px" [disabled]="form.invalid || isLoading" type="submit" class="btn btn-primary">S'inscrire</button>
+                        </div>
+              
+                        <!--div class="container-fluid mt-4">
+                          <div class="text-center">
+                            <div class="spinner-border" *ngIf="isLoading" role="status">
+                              <span class="visually-hidden"></span>
+                            </div>
+                          </div>
+                        </div-->
+              
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </main>
+
+                    <!-- A propos -->
+                    <div style="color: black;" class="modal fade" id="downloadOntologie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Téléchargement de l'ontologie</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                          Clickez sur ce bouton pour telecharger l'ontologie
+                          <p class="lead mt-4">
+                            <a target="_blank" download="food.owl" href="{%static '/assets/food.owl'%}" class="btn btn-lg btn-primary">Télécharger</a>
+                          </p>
+                          </div>
+                          <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+
+            <script src="{%static '/js/jquery-3.6.0.min.js' %}"></script>
+            <script src="{%static '/js/bootstrap.min.js' %}"></script>
+    </body>
+
+</html>
